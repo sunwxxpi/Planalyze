@@ -1,7 +1,5 @@
 import os
 import torch
-import pandas as pd
-import matplotlib.pyplot as plt
 from datetime import datetime
 from ultralytics import YOLO
 
@@ -23,7 +21,6 @@ os.makedirs(save_dir, exist_ok=True)
 # 모델 로드
 # 방법 1: 사전 훈련된 YOLOv11 세그멘테이션 모델 사용
 model = YOLO('yolo11n-seg.pt')
-# model = YOLO('runs/segment/20250421_034638/exp/weights/last.pt')
 
 # Background 클래스 제거
 classes = [i for i in range(23) if i != 11]
@@ -39,19 +36,25 @@ results = model.train(
     val=True,                  # 검증 수행
     rect=False,                # 직사각형 학습 설정
     verbose=True,              # 상세 출력
+    classes=classes,           # 클래스 설정
     device=device_str,         # 다중 GPU 설정
-    classes=classes,
     # resume=True
 )
 
-# model = YOLO(f"{save_dir}/exp/weights/best.pt")  # 훈련된 모델 로드
 model = YOLO(f"{save_dir}/exp/weights/best.pt")  # 훈련된 모델 로드
+# model = YOLO(f"/home/psw/Planalyze/runs/segment/20250421_034638/exp/weights/best.pt")  # 훈련된 모델 로드
 
 # 학습 결과 평가
 metrics = model.val(classes=classes)  # 검증 데이터셋에 대한 평가
 print("Metrics:", metrics.seg.maps)
 
-# 테스트 이미지에 추론 실행 (선택적)
-# results = model("path/to/test/images")
+test_list = ["/home/psw/Planalyze/1_APT_FP_STR_024028684.png",
+                "/home/psw/Planalyze/2_APT_FP_STR_029608817.png",
+                "/home/psw/Planalyze/3_APT_FP_STR_030708405.png"]
+
+# 테스트 이미지에 추론 실행
+results = model(test_list,
+                save=True,
+                show_boxes=False)
 
 print(f"Training completed. Results saved to {save_dir}")
