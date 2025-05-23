@@ -2,3 +2,6 @@ datasets
 runs
 
 *.pt
+*.jpg
+*.png
+*.json
