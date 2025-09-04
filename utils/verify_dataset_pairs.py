@@ -1,8 +1,8 @@
 import os
 
 # Directories to compare
-images_dir = '/home/psw/Planalyze/yolo_drawing_data/images/train'
-labels_dir = '/home/psw/Planalyze/yolo_drawing_data/labels/train'
+images_dir = './yolo_dataset/SPA/images/val'
+labels_dir = './yolo_dataset/SPA/labels/val'
 
 # Get filenames without extensions
 images_files = {os.path.splitext(f)[0] for f in os.listdir(images_dir)}
