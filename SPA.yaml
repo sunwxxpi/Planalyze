@@ -1,7 +1,7 @@
 path: SPA
 train: images/train
 val: images/val
-nc: 22 # 23
+nc: 23
 names:
   - "공간_다목적공간"
   - "공간_엘리베이터홀"
@@ -14,7 +14,7 @@ names:
   - "구조_출입문"
   - "구조_창호"
   - "구조_벽체"
-  # - "background"
+  - "background"
   - "공간_거실"
   - "공간_침실"
   - "공간_주방"
