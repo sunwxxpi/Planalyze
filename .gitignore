@@ -1,4 +1,6 @@
-datasets
+drawing_data_raw
+dataset
+yolo_dataset
 runs
 
 *.pt
