@@ -1,7 +1,7 @@
-drawing_data_raw
-dataset
-yolo_dataset
-runs
+dataset_drawing
+dataset_drawing_raw
+dataset_yolo
+results
 
 *.pt
 *.jpg
