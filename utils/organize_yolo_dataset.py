@@ -162,7 +162,7 @@ def process_labels(labels_path, target_path, split_type):
 def main():
     # 사용자 설정
     source_directory = "./dataset"  # 현재 데이터셋 경로
-    target_directory = "./yolo_dataset"  # 새로운 YOLO 데이터셋 경로
+    target_directory = "./dataset_yolo"  # 새로운 YOLO 데이터셋 경로
     
     print("데이터셋 구조 변환을 시작합니다...")
     print(f"소스 디렉토리: {source_directory}")
@@ -173,7 +173,7 @@ def main():
     
     print("데이터셋 구조 변환이 완료되었습니다!")
     print("\n생성된 구조:")
-    print("yolo_dataset/")
+    print("dataset_yolo/")
     print("├── STR/")
     print("│   ├── images/")
     print("│   │   ├── train/ (Training 폴더의 STR 데이터)")
