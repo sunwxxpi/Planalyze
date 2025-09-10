@@ -1,7 +1,7 @@
 import os
+import matplotlib.pyplot as plt
 from datetime import datetime
 from ultralytics import YOLO
-import matplotlib.pyplot as plt
 
 # 한글 폰트 설정
 plt.rcParams['font.family'] = 'NanumBarunGothic'
@@ -12,7 +12,7 @@ BATCH_SIZE = 2
 IMAGE_SIZE = 2080
 RESULT_DIR = f"./results/STR/{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 TARGET_CLASSES = [8, 9, 10] # STR Classes
-GPU_DEVICE=1
+GPU_DEVICE = 1
 
 os.makedirs(RESULT_DIR, exist_ok=True)
 
@@ -22,8 +22,8 @@ model = YOLO('yolo11s-seg.pt')
 # 학습 설정
 results = model.train(
                 data="STR.yaml",             # 데이터셋 설정 파일
-                epochs=EPOCHS,                  # 훈련 에폭 수
-                batch=BATCH_SIZE,                     # 배치 크기
+                epochs=EPOCHS,               # 훈련 에폭 수
+                batch=BATCH_SIZE,            # 배치 크기
                 imgsz=IMAGE_SIZE,            # 이미지 크기
                 project=RESULT_DIR,          # 결과 저장 프로젝트 폴더
                 val=True,                    # 검증 수행
